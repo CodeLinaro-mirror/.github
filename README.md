@@ -24,10 +24,10 @@ await (async () => {
 
   console.log("done!");
   console.log(allProjects.map(p => ({
-		name:p.path_with_namespace,
-		clone_url:p.http_url_to_repo,
-		description:p.description}))
-	);
+	name: p.path_with_namespace.slice(4),
+	clone_url: p.http_url_to_repo,
+	description: p.description
+  })));
 })();
 ```
 
