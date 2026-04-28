@@ -36,6 +36,8 @@ jobs:
         id: split
         run: |
           PARALLEL=20
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           rm -rf split/*
           cat repos.json | jq -c '.[]' | shuf | split -n l/$PARALLEL /dev/stdin split/
           cd split
