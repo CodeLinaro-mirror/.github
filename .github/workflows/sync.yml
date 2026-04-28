@@ -33,6 +33,7 @@ jobs:
           PARALLEL=20
           MATRIX=$(cat repos.json | jq -c '.[]' | shuf | \
                     split -n l/$PARALLEL --filter='jq -Rs .' | jq -sc .)
+          echo "$MATRIX"
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
 
   main:
