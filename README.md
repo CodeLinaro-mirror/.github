@@ -22,12 +22,16 @@ await (async () => {
     await new Promise(resolve => setTimeout(resolve, 300));
   }
 
-  console.log("done!");
-  console.log(allProjects.map(p => ({
-	name: p.path_with_namespace.slice(4),
-	clone_url: p.http_url_to_repo,
-	description: p.description
-  })));
+  const result = allProjects.map(p => ({
+    name: p.path_with_namespace.slice(4),
+    clone_url: p.http_url_to_repo,
+    description: p.description
+  }));
+
+  console.log(JSON.stringify(
+    result.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0),
+    null, 2
+  ));
 })();
 ```
 
